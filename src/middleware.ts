@@ -6,12 +6,18 @@ import { updateSession } from "./lib/supabase/middleware";
 const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(request: NextRequest) {
-  const supabaseResponse = await updateSession(request);
   const intlResponse = intlMiddleware(request);
 
-  supabaseResponse.cookies.getAll().forEach((cookie) => {
-    intlResponse.cookies.set(cookie.name, cookie.value);
-  });
+  try {
+    const supabaseResponse = await updateSession(request);
+    if (supabaseResponse) {
+      supabaseResponse.cookies.getAll().forEach((cookie) => {
+        intlResponse.cookies.set(cookie.name, cookie.value);
+      });
+    }
+  } catch (error) {
+    console.error("Supabase middleware error:", error);
+  }
 
   return intlResponse;
 }

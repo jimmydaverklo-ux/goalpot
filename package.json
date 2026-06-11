@@ -11,8 +11,8 @@
     "db:push": "npx supabase link --project-ref luscnjqtdquvcjavrmot --yes && npx supabase db push --linked --yes"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.49.8",
+    "@supabase/ssr": "^0.8.0",
+    "@supabase/supabase-js": "^2.87.0",
     "next": "^15.3.3",
     "next-intl": "^4.1.0",
     "react": "^19.1.0",
