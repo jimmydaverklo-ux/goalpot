@@ -1,14 +1,11 @@
 import { Link } from "@/i18n/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { getServerUser } from "@/lib/supabase/server";
 import { getTranslations } from "next-intl/server";
 
 export default async function HomePage() {
   const t = await getTranslations("home");
   const tCommon = await getTranslations("common");
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getServerUser();
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-20 text-center">
