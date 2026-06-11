@@ -1,0 +1,20 @@
+# Goalpot Supabase local config reference
+# For hosted projects, configure via Supabase Dashboard (see docs/SUPABASE_SETUP.md)
+
+[auth]
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/callback"]
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+
+[auth.external.google]
+enabled = true
+# client_id and secret set in Dashboard → Authentication → Providers
+
+[auth.external.facebook]
+enabled = true
+
+[auth.external.apple]
+enabled = true
